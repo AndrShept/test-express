@@ -12,6 +12,12 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('test',(req, res)=> {
+    
+
+    res.status(200).json({message: 'dadad', [2,3,2,3,4,2,2,]})
+})
+
 // Налаштовуємо обробку підключення Socket.IO
 io.on('connection', (socket) => {
   console.log('a user connected');
