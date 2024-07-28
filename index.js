@@ -4,6 +4,7 @@ const socketIo = require('socket.io'); // Імпортуємо Socket.IO
 
 const app = express(); // Створюємо інстанцію додатку Express
 
+app.use(express.json());
 const server = http.createServer(app); // Створюємо HTTP сервер
 const io = socketIo(server); // Ініціалізуємо Socket.IO на нашому сервері
 
@@ -12,11 +13,9 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-app.get('test',(req, res)=> {
-    
-
-    res.status(200).json({message: 'dadad', arr: [2,3,2,3,4,2,2,]})
-})
+app.get('/test', (req, res) => {
+  res.status(200).json({ message: 'dadad', arr: [2, 3, 2, 3, 4, 2, 2] });
+});
 
 // Налаштовуємо обробку підключення Socket.IO
 io.on('connection', (socket) => {
