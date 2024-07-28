@@ -5,12 +5,7 @@ const app = express(); // Створюємо інстанцію додатку E
 const cors = require('cors');
 
 const server = http.createServer(app); // Створюємо HTTP сервер
-const io = socketIo(server, {
-  cors: {
-    origin: '*',
-    credentials: true,
-  },
-}); // Ініціалізуємо Socket.IO на нашому сервері
+const io = socketIo(server); // Ініціалізуємо Socket.IO на нашому сервері
 
 require('dotenv').config();
 app.use(express.json());
