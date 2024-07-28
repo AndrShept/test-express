@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 app.get('test',(req, res)=> {
     
 
-    res.status(200).json({message: 'dadad', [2,3,2,3,4,2,2,]})
+    res.status(200).json({message: 'dadad', arr: [2,3,2,3,4,2,2,]})
 })
 
 // Налаштовуємо обробку підключення Socket.IO
