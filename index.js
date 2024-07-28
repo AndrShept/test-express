@@ -1,12 +1,20 @@
 const express = require('express'); // Імпортуємо Express
 const http = require('http'); // Імпортуємо модуль HTTP
 const socketIo = require('socket.io'); // Імпортуємо Socket.IO
-
 const app = express(); // Створюємо інстанцію додатку Express
+const cors = require('cors');
 
-app.use(express.json());
 const server = http.createServer(app); // Створюємо HTTP сервер
-const io = socketIo(server); // Ініціалізуємо Socket.IO на нашому сервері
+const io = socketIo(server, {
+  cors: {
+    origin: '*',
+    credentials: true,
+  },
+}); // Ініціалізуємо Socket.IO на нашому сервері
+
+require('dotenv').config();
+app.use(express.json());
+app.use(cors());
 
 // Налаштовуємо маршрут для домашньої сторінки
 app.get('/', (req, res) => {
